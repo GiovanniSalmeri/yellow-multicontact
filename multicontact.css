@@ -1,0 +1,31 @@
+/* Multicontact extension, https://github.com/GiovanniSalmeri/yellow-multicontact */
+
+form#multicontact-form div {
+    margin-bottom: 0.5em;
+}
+form#multicontact-form input, form#multicontact-form select, form#multicontact-form textarea {
+    width: 100%;
+    max-width: 600px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+form#multicontact-form textarea {
+    resize: none;
+}
+form#multicontact-form input[type=submit] {
+    width: initial;
+}
+img#multicontact-spinner {
+    vertical-align: text-bottom;
+    margin-left: 10px;
+    height: 20px;
+    width: 20px;
+    display: none;
+}
+div#multicontact-message {
+    font-weight: bold;
+}
+div#multicontact-message.error {
+    color: red;
+}
