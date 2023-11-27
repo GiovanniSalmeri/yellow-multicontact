@@ -2,11 +2,11 @@
 
 Email contact form with multiple addresses.
 
-<p align="center"><img src="multicontact-screenshot.png?raw=true" alt="Screenshot"></p>
+<p align="SCREENSHOT.png?raw=true" alt="Screenshot"></p>
 
 ## How to install an extension
 
-[Download ZIP file](https://github.com/GiovanniSalmeri/yellow-multicontact/archive/main.zip) and copy it into your `system/extensions` folder. [Learn more about extensions](https://github.com/annaesvensson/yellow-update).
+[Download ZIP file](https://github.com/GiovanniSalmeri/yellow-multicontact/archive/refs/heads/main.zip) and copy it into your `system/extensions` folder. [Learn more about extensions](https://github.com/annaesvensson/yellow-update).
 
 ## How to use Multicontact
 
