@@ -2,7 +2,7 @@
 // Multicontact extension, https://github.com/GiovanniSalmeri/yellow-multicontact
 
 class YellowMulticontact {
-    const VERSION = "0.8.17";
+    const VERSION = "0.8.18";
     public $yellow;         //access to API
     private $smtpSocket;
 
@@ -110,13 +110,15 @@ class YellowMulticontact {
                         $subject = array_slice($addresses, $page->getRequest("subject"), 1);
                     }
 
-                    $mail["headers"]["to"] = [ reset($subject) ];
-                    $mail["headers"]["from"] = [ $page->getRequest("name") => $page->getRequest("email") ];
-                    $mail["headers"]["subject"] = "[".$this->yellow->system->get("sitename")."] ".key($subject);
-                    $mail["text"]["plain"]["body"] = $page->getRequest("message")."\n";
-                    $mail["text"]["plain"]["signature"] = $page->getRequest("name")."\n";
+                    $headers = [];
+                    $headers["to"] = [ reset($subject) ];
+                    $headers["from"] = [ $page->getRequest("name") => $page->getRequest("email") ];
+                    $headers["subject"] = "[".$this->yellow->system->get("sitename")."] ".key($subject);
+                    $message = [];
+                    $message["text"]["plain"]["body"] = $page->getRequest("message");
+                    $message["text"]["plain"]["signature"] = $page->getRequest("name");
 
-                    $status = $this->yellow->toolbox->mail("multicontact", $mail, true);
+                    $status = $this->yellow->toolbox->mail("multicontact", $headers, $message);
                     $statusMessage = $status ? $this->yellow->language->getTextHtml("multicontactMessageSent") : $this->yellow->language->getTextHtml("multicontactMessageNotSent");
                     if ($page->getRequest("__httprequest")=="xmlhttp") {
                         @header("Content-Type: application/json; charset=utf-8");
