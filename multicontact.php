@@ -10,7 +10,7 @@ class YellowMulticontact {
     public function onLoad($yellow) {
         $this->yellow = $yellow;
         $this->yellow->system->setDefault("multicontactAjax", "1");
-        $this->yellow->language->setDefaults([
+        $this->yellow->language->setDefaults(array(
             "Language: en",
             "MulticontactName: Name",
             "MulticontactEmail: Email",
@@ -83,7 +83,7 @@ class YellowMulticontact {
             "MulticontactButton: Wyślij wiadomość",
             "MulticontactMessageSent: Wiadomość została wysłana.",
             "MulticontactMessageNotSent: Wiadomość nie mogła zostać wysłana",
-        ]);
+        ));
     }
 
     // Handle page content parsing of custom block
