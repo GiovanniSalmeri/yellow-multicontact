@@ -2,7 +2,7 @@
 // Multicontact extension, https://github.com/GiovanniSalmeri/yellow-multicontact
 
 class YellowMulticontact {
-    const VERSION = "0.8.18";
+    const VERSION = "0.9.1";
     public $yellow;         //access to API
     private $smtpSocket;
 
@@ -87,7 +87,7 @@ class YellowMulticontact {
     }
 
     // Handle page content parsing of custom block
-    public function onParseContentShortcut($page, $name, $text, $type) {
+    public function onParseContentElement($page, $name, $text, $attributes, $type) {
         $output = null;
         $statusMessage = null;
         if ($name=="multicontact" && ($type=="block" || $type=="inline")) {
@@ -128,7 +128,7 @@ class YellowMulticontact {
 
                 }
                 if (!$page->isRequest("send") || $result[0]===false) {
-                    $extensionLocation = $this->yellow->system->get("coreServerBase").$this->yellow->system->get("coreExtensionLocation");
+                    $assetLocation = $this->yellow->system->get("coreServerBase").$this->yellow->system->get("coreAssetLocation");
                     $output .= "<form method=\"post\" id=\"multicontact-form\">\n";
                     $output .= "<div><label>".$this->yellow->language->getTextHtml("multicontactName")."<br /><input class=\"form-control\" type=\"text\" size=\"40\" required=\"required\" name=\"name\" id=\"name\" value=\"".$page->getRequestHtml("name")."\" /></label></div>\n";
                     $output .= "<div><label>".$this->yellow->language->getTextHtml("multicontactEmail")."<br /><input class=\"form-control\" type=\"email\" size=\"40\" required=\"required\" name=\"email\" id=\"email\" value=\"".$page->getRequestHtml("email")."\" /></label></div>\n";
@@ -143,7 +143,7 @@ class YellowMulticontact {
                     $output .= "<div><label>".$this->yellow->language->getTextHtml("multicontactMessage")."<br /><textarea class=\"form-control\" required=\"required\" name=\"message\" id=\"message\" rows=\"10\" cols=\"60\">".$page->getRequestHtml("message")."</textarea></label></div>\n";
                     $output .= "<div><input type=\"hidden\" name=\"send\" id=\"send\" value=\"send\" /></div>\n";
                     $output .= "<div><input class=\"btn\" type=\"submit\" value=\"".$this->yellow->language->getTextHtml("multicontactButton")."\">";
-                    if ($this->yellow->system->get("multicontactAjax")) $output .= "<img id=\"multicontact-spinner\" src=\"{$extensionLocation}multicontact-spinner.svg\" aria-hidden=\"true\" alt=\"\" />";
+                    if ($this->yellow->system->get("multicontactAjax")) $output .= "<img id=\"multicontact-spinner\" src=\"{$assetLocation}multicontact-spinner.svg\" aria-hidden=\"true\" alt=\"\" />";
                     $output .= "</div>\n</form>\n";
                 }
                 $output .= "<div id=\"multicontact-message\"".($statusMessage ? " role=\"alert\"" : "").">".$statusMessage."</div>\n";
@@ -158,9 +158,9 @@ class YellowMulticontact {
     public function onParsePageExtra($page, $name) {
         $output = null;
         if ($name=="header") {
-            $extensionLocation = $this->yellow->system->get("coreServerBase").$this->yellow->system->get("coreExtensionLocation");
-            $output .= "<link rel=\"stylesheet\" type=\"text/css\" media=\"all\" href=\"{$extensionLocation}multicontact.css\" />\n";
-            if ($this->yellow->system->get("multicontactAjax")) $output .= "<script type=\"text/javascript\" defer=\"defer\" src=\"{$extensionLocation}multicontact.js\"></script>\n";
+            $assetLocation = $this->yellow->system->get("coreServerBase").$this->yellow->system->get("coreAssetLocation");
+            $output .= "<link rel=\"stylesheet\" type=\"text/css\" media=\"all\" href=\"{$assetLocation}multicontact.css\" />\n";
+            if ($this->yellow->system->get("multicontactAjax")) $output .= "<script type=\"text/javascript\" defer=\"defer\" src=\"{$assetLocation}multicontact.js\"></script>\n";
         }
         return $output;
     }

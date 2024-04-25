@@ -1,4 +1,4 @@
-# Multicontact 0.8.17
+# Multicontact 0.9.1
 
 Email contact form with multiple addresses.
 
