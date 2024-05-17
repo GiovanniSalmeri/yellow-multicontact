@@ -86,7 +86,7 @@ class YellowMulticontact {
         ));
     }
 
-    // Handle page content parsing of custom block
+    // Handle page content element
     public function onParseContentElement($page, $name, $text, $attributes, $type) {
         $output = null;
         $statusMessage = null;
