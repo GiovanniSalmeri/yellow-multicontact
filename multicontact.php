@@ -2,7 +2,7 @@
 // Multicontact extension, https://github.com/GiovanniSalmeri/yellow-multicontact
 
 class YellowMulticontact {
-    const VERSION = "0.9.1";
+    const VERSION = "1.0.0";
     public $yellow;         //access to API
     private $smtpSocket;
 
@@ -159,8 +159,8 @@ class YellowMulticontact {
         $output = null;
         if ($name=="header") {
             $assetLocation = $this->yellow->system->get("coreServerBase").$this->yellow->system->get("coreAssetLocation");
-            $output .= "<link rel=\"stylesheet\" type=\"text/css\" media=\"all\" href=\"{$assetLocation}multicontact.css\" />\n";
-            if ($this->yellow->system->get("multicontactAjax")) $output .= "<script type=\"text/javascript\" defer=\"defer\" src=\"{$assetLocation}multicontact.js\"></script>\n";
+            $output .= "<link rel=\"stylesheet\" media=\"all\" href=\"{$assetLocation}multicontact.css\" />\n";
+            if ($this->yellow->system->get("multicontactAjax")) $output .= "<script defer=\"defer\" src=\"{$assetLocation}multicontact.js\"></script>\n";
         }
         return $output;
     }

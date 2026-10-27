@@ -1,8 +1,8 @@
-# Multicontact 0.9.1
+# Multicontact 1.0.0
 
-Email contact form with multiple addresses.
+Email contact form with multiple addresses. Developed by Giovanni Salmeri.
 
-<p align="center"><img src="SCREENSHOT.png" alt="Screenshot"></p>
+<p align="center"><img src="screenshot.png" alt="Screenshot"></p>
 
 ## How to install an extension
 
@@ -34,6 +34,4 @@ The following setting can be configured in file `system/extensions/yellow-system
 
 `MulticontactAjax` = use AJAX for contact form  
 
-## Developer
-
-Giovanni Salmeri. [Get help](https://datenstrom.se/yellow/help/).
+Do you have questions? [Get help](https://datenstrom.se/yellow/help/).
